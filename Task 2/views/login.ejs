@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f9f9f9;
+          padding: 20px;
+        }
+        .form-container {
+          max-width: 600px;
+          margin: auto;
+          padding: 20px;
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+        }
+        .error {
+          color: red;
+          font-size: 0.9em;
+        }
+      </style>
+</head>
+<body>
+    <div class="form-container" style="margin-left: 430px;">
+        <h1>Login</h1>
+        <form id="registrationForm" action="/loginsubmit" method="POST">
+          
+          
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" required style="width: 100%; margin-bottom: 10px;"><br>
+
+          <label for="email">Password:</label><br>
+          <input type="password" id="password" name="password" required style="width: 100%; margin-bottom: 10px;"><br>
+          
+          <button type="submit" style="padding: 10px 20px;">Submit</button>
+        </form>
+        <p id="errorMessage" class="error"></p>
+      </div>
+
+     
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f9f9f9;
+          padding: 20px;
+        }
+        .form-container {
+          max-width: 600px;
+          margin: auto;
+          padding: 20px;
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+        }
+        .error {
+          color: red;
+          font-size: 0.9em;
+        }
+      </style>
+</head>
+<body>
+    <div class="form-container" style="margin-left: 430px;">
+        <h1>Register</h1>
+        <form id="registrationForm" action="/submit" method="POST">
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name" required style="width: 100%; margin-bottom: 10px;"><br>
+          
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" required style="width: 100%; margin-bottom: 10px;"><br>
+
+          <label for="email">Password:</label><br>
+          <input type="password" id="password" name="password" required style="width: 100%; margin-bottom: 10px;"><br>
+
+          <label for="phone">Phone:</label><br>
+          <input type="tel" id="phone" name="phone" required style="width: 100%; margin-bottom: 10px;"><br>
+          
+          <label for="age">Age:</label><br>
+          <input type="number" id="age" name="age" required style="width: 100%; margin-bottom: 10px;"><br>
+          
+          <label for="gender">Gender:</label><br>
+          <select id="gender" name="gender" required style="width: 100%; margin-bottom: 10px;">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select><br>
+          
+          <button type="submit" style="padding: 10px 20px;">Submit</button>
+        </form>
+        <p id="errorMessage" class="error"></p>
+      </div>
+
+      <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      const phone = document.getElementById('phone').value;
+      const age = document.getElementById('age').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('errorMessage');
+
+      if (!/^\d{10}$/.test(phone)) {
+        event.preventDefault();
+        errorMessage.textContent = 'Phone number must be 10 digits.';
+        return;
+      }
+
+      if (age < 18 || age > 100) {
+        event.preventDefault();
+        errorMessage.textContent = 'Age must be between 18 and 100.';
+        return;
+      }
+
+      if (password.length < 6) {
+        event.preventDefault();
+        errorMessage.textContent = 'Password must be at least 6 characters long.';
+        return;
+      }
+
+      errorMessage.textContent = '';
+    });
+      </script>
+</body>
+</html>
